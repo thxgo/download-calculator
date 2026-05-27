@@ -1,15 +1,13 @@
-tamMB = float(input('tamanho do arquivo (MB): \t\t(obs, MB -> GB = GB x 1024)'))
-vel = float(input('\nvelocidade da internet (Mbps):'))
+print("Download Time Calculator\nPS: GB -> MB => multiply by 1024")
 
-tamMb = tamMB * 8 
-tempo_s = tamMb / vel 
+file_size_mb = float(input('\nsize file (MB):'))
+speed_mbps = float(input('internet speed (Mbps):'))
 
-horas = int(tempo_s // 3600)
-minutos = int((tempo_s % 3600) // 60)
-segundos = int(tempo_s % 60)
+file_size_mb = file_size_mb * 8 
+total_sec = file_size_mb / speed_mbps 
 
+hours = int(total_sec // 3600)
+minutes = int((total_sec % 3600) // 60)
+seconds = int(total_sec % 60)
 
-print(f'\ntempo de download: {horas} hora(s), {minutos} minuto(s), {segundos} segundo(s)')
-
-
-
+print(f'\ndownload time: {hours} hour(s), {minutes} minute(s), {seconds} second(s)')
