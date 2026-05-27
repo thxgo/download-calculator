@@ -1,13 +1,21 @@
-print("Download Time Calculator\nPS: GB -> MB => multiply by 1024")
+def download_time(file_size_mb: float, speed_mbps: float) -> tuple[int, int, int]:
+    file_size_mb = file_size_mb * 8 
+    total_sec = file_size_mb / speed_mbps 
 
-file_size_mb = float(input('\nsize file (MB):'))
-speed_mbps = float(input('internet speed (Mbps):'))
+    hours = int(total_sec // 3600)
+    minutes = int((total_sec % 3600) // 60)
+    seconds = int(total_sec % 60)
 
-file_size_mb = file_size_mb * 8 
-total_sec = file_size_mb / speed_mbps 
+    return hours, minutes, seconds
 
-hours = int(total_sec // 3600)
-minutes = int((total_sec % 3600) // 60)
-seconds = int(total_sec % 60)
+def main():
+    print("Download Time Calculator\nPS: GB -> MB => multiply by 1024")
 
-print(f'\ndownload time: {hours} hour(s), {minutes} minute(s), {seconds} second(s)')
+    file_size_mb = float(input('\nsize file (MB):'))
+    speed_mbps = float(input('internet speed (Mbps):'))
+
+    hours, minutes, seconds = download_time(file_size_mb, speed_mbps)
+    print(f'\ndownload time: {hours} hour(s), {minutes} minute(s), {seconds} second(s)')
+
+if __name__ == "__main__":
+    main()
